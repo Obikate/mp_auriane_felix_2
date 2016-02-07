@@ -254,6 +254,33 @@ Dvector & Dvector::operator=(const Dvector &d)
     return *this;
 };
 
+/**
+ * @brief Surcharge externe de l'opérateur '+' avec un autre Dvector.
+ */
+Dvector operator + (const Dvector & dvec1, const Dvector & dvec2)
+{
+    if(dvec1.size() != dvec2.size())
+        exit(-1);
+    Dvector res(dvec1.size());
+    for(int i = 0; i<res.size(); i++)
+    {
+        res.pCor[i] = dvec1.pCor[i] + dvec2.pCor[i];
+    }
+    return res;
+}
+
+/**
+ * @brief Surcharge externe de l'opérateur '-' avec un autre Dvector.
+ */
+Dvector operator - (const Dvector & dvec1, const Dvector & dvec2)
+{
+    //on évite le cas x = x-x
+    if(dvec1.pCor == dvec2.pCor && dvec1.size() == dvec2.size())
+        return dvec1*0;
+    for(int i=0; i<dvec2.size(); i++)
+        dvec2.pCor[i] *= -1;
+    return dvec1+dvec2;
+}
 
 //implémentation de l'accesseur pour le TP2 question 2
 /**
