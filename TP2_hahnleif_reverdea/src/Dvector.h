@@ -29,5 +29,8 @@ class Dvector {
      	  double & operator[](int i);
 };
         Dvector operator +(const Dvector &, const double &); 
+        Dvector operator +(const double &, const Dvector &); 
+        Dvector operator -(const Dvector &, const double &); 
+        Dvector operator -(const double &, const Dvector &); 
 
 #endif

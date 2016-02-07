@@ -192,6 +192,26 @@ Dvector operator + (const Dvector & dvec, const double & d)
     return res;
 }
 
+Dvector operator + (const double & d, const Dvector & dvec)
+{
+    return dvec+d;
+}
+
+/**
+ * @brief Surcharge externe de l'opérateur '-' avec un double.
+ */
+Dvector operator - (const Dvector & dvec, const double & d)
+{
+    return dvec+(-d);
+}
+
+Dvector operator - (const double & d, const Dvector & dvec)
+{
+    for(int i=0; i<dvec.size(); i++)
+        dvec.pCor[i] *= -1;
+    return dvec+d;
+}
+
 /**
  * @brief Surcharge interne de l'opérateur d'affectation '='.
  */

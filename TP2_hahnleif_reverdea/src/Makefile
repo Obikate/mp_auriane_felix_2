@@ -1,5 +1,6 @@
-PROGS=test_check_interval test_operator_plus_right test_affectation_one test_check_interval
-PROGS += test_VectorAccessor
+PROGS=test_check_interval test_operator_plus_right test_affectation_one 
+PROGS +=test_check_interval test_operator_minus_right test_operator_minus_left
+PROGS += test_VectorAccessor test_affectation_two test_operator_plus_left 
 CXX = g++
 CXXFLAGS = -Wall #-g
 
