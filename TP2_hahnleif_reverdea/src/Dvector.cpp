@@ -178,3 +178,30 @@ Dvector::Dvector(std::string str)
     }
     file.close();
 }
+
+/**
+ * @brief Surcharge externe de l'opérateur '+' avec un double.
+ */
+Dvector operator + (const Dvector & dvec, const double & d)
+{
+    Dvector res(dvec.size());
+    for(int i = 0; i<res.size(); i++)
+    {
+        res.pCor[i] = dvec.pCor[i] + d;
+    }
+    return res;
+}
+
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '='.
+ */
+Dvector & Dvector::operator=(const Dvector &d)
+{
+    dim = d.size();
+    if(pCor == d.pCor)
+        return *this;
+    pCor = new double[dim];
+    std::memcpy(pCor, d.pCor, dim*sizeof(double));
+
+    return *this;
+};

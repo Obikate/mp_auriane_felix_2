@@ -1,4 +1,4 @@
-PROGS=test_check_interval
+PROGS=test_check_interval test_operator_plus_right test_affectation_one
 CXX = g++
 CXXFLAGS = -Wall #-g
 

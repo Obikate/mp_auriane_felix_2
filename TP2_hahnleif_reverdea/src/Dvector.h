@@ -5,6 +5,7 @@
 #include <fstream>
 #include "stdlib.h"
 #include <stdexcept>
+#include <cstring>
 
 class Dvector {
     private:
@@ -23,6 +24,8 @@ class Dvector {
         Dvector(std::string str);
         //TP2
         void checkInterval(int inf, int max, int arg);
+        Dvector & operator=(const Dvector &);
 };
+        Dvector operator +(const Dvector &, const double &); 
 
 #endif
