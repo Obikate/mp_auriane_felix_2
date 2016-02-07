@@ -1,6 +1,6 @@
 /**
  * @author Auriane, Felix.
- * @date 01/01/16.
+ * @date 06/02/16.
  * @brief Classe de test vérifiant le bon fonctionnement de la méthode 
  * getVector.
  */ 
