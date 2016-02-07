@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include "stdlib.h"
+#include <stdexcept>
 
 class Dvector {
     private:
@@ -20,6 +21,8 @@ class Dvector {
         Dvector(const Dvector & d);
         //question 3
         Dvector(std::string str);
+        //TP2
+        void checkInterval(int inf, int max, int arg);
 };
 
 #endif

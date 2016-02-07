@@ -1,6 +1,4 @@
-PROGS=test_size test_display test_constructor test_constructor_normal 
-PROGS += test_empty_file test_values_file test_big_file test_display_file
-PROGS += test_constructor_recopie test_fill_randomly
+PROGS=test_check_interval
 CXX = g++
 CXXFLAGS = -Wall #-g
 
