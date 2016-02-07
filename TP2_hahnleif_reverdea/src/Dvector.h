@@ -29,7 +29,11 @@ class Dvector {
 	double & operator[](int i);
         Dvector & operator-();
         Dvector & operator +=(const Dvector & dvec); 
+        Dvector & operator +=(const double & d); 
         Dvector & operator -=(const Dvector & dvec); 
+        Dvector & operator -=(const double & d); 
+        Dvector & operator *=(const double & d); 
+        Dvector & operator /=(const double & d); 
 };
         //opérations entre un Dvector et un double
         Dvector operator +(const Dvector &, const double &); 
