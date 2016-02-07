@@ -314,3 +314,53 @@ double & Dvector::operator [](int i)
     checkInterval(0, size() - 1, i);
     return pCor[i]; 
 }
+
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '+='.
+ */
+Dvector & Dvector::operator+=(const Dvector &dvec)
+{
+   if (dim != dvec.size()) 
+       exit(-1);
+   Dvector &v = *this;
+   for (int i = 0; i < dim; i++)
+       v[i] += dvec.pCor[i];
+   return v;
+}
+
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '-='.
+ */
+Dvector & Dvector::operator-=(const Dvector &dvec)
+{
+   return this+=(-dvec);
+}
+
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '*='.
+ */
+Dvector & Dvector::operator*=(const Dvector &dvec)
+{
+    /** TODO
+     *	faire les tests avec les dim différentes
+     */
+   if (dim != dvec.size()) 
+       exit(-1);
+   Dvector &v = *this;
+   for (int i = 0; i < dim; i++)
+       v[i] *= dvec.pCor[i];
+   return v;
+}
+
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '/='.
+ */
+Dvector & Dvector::operator/=(const Dvector &dvec)
+{
+   if (dim != dvec.size()) 
+       exit(-1);
+   Dvector &v = *this;
+   for (int i = 0; i < dim; i++)
+       v[i] /= dvec.pCor[i];
+   return v;
+}
