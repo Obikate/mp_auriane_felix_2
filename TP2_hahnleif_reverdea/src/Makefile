@@ -1,5 +1,5 @@
 PROGS = test_check_interval test_operator_plus_right test_affectation_one 
-PROGS +=  test_operator_minus_right test_operator_minus_left
+PROGS += test_operator_minus_right test_operator_minus_left
 PROGS += test_VectorAccessor test_affectation_two test_operator_plus_left 
 PROGS += test_write_VectorAccessor test_operator_times_right
 PROGS += test_operator_times_left test_operator_divide test_operator_divide_zero
@@ -11,7 +11,6 @@ PROGS += test_operator_self_multiplication_real test_operator_self_subtraction_r
 PROGS += test_operator_self_addition_real test_operator_self_division_real
 PROGS += test_operator_self_division 
 
->>>>>>> Stashed changes
 CXX = g++
 CXXFLAGS = -Wall #-g
 
