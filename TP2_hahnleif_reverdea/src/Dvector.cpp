@@ -213,6 +213,34 @@ Dvector operator - (const double & d, const Dvector & dvec)
 }
 
 /**
+ * @brief Surcharge externe de l'opérateur '*' avec un double.
+ */
+Dvector operator * (const Dvector & dvec, const double & d)
+{
+    Dvector res(dvec.size());
+    for(int i = 0; i<res.size(); i++)
+    {
+        res.pCor[i] = dvec.pCor[i]*d;
+    }
+    return res;
+}
+
+Dvector operator * (const double & d, const Dvector & dvec)
+{
+    return dvec*d;
+}
+
+/**
+ * @brief Surcharge externe de l'opérateur '/' avec un double.
+ */
+Dvector operator / (const Dvector & dvec, const double & d)
+{
+    if(d == 0)
+        throw std::overflow_error("Division par zero!");
+    return dvec*(1/d);
+}
+
+/**
  * @brief Surcharge interne de l'opérateur d'affectation '='.
  */
 Dvector & Dvector::operator=(const Dvector &d)

@@ -32,5 +32,8 @@ class Dvector {
         Dvector operator +(const double &, const Dvector &); 
         Dvector operator -(const Dvector &, const double &); 
         Dvector operator -(const double &, const Dvector &); 
+        Dvector operator *(const Dvector &, const double &); 
+        Dvector operator *(const double &, const Dvector &); 
+        Dvector operator /(const Dvector &, const double &); 
 
 #endif
