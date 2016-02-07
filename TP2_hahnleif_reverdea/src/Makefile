@@ -4,7 +4,7 @@ PROGS += test_VectorAccessor test_affectation_two test_operator_plus_left
 PROGS += test_write_VectorAccessor test_operator_times_right
 PROGS += test_operator_times_left test_operator_divide test_operator_divide_zero
 PROGS += test_operator_plus_vector test_operator_plus_vector_invalid
-PROGS += test_operator_minus_vector
+PROGS += test_operator_minus_vector test_operator_unary_minus
 CXX = g++
 CXXFLAGS = -Wall #-g
 

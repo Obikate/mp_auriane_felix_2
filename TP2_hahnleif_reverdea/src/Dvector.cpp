@@ -255,6 +255,17 @@ Dvector & Dvector::operator=(const Dvector &d)
 };
 
 /**
+ * @brief Surcharge interne de l'opérateur unaire '-'.
+ */
+Dvector & Dvector::operator-()
+{
+    for(int i=0; i<dim; i++)
+        pCor[i] *=-1;
+    return *this;
+};
+
+
+/**
  * @brief Surcharge externe de l'opérateur '+' avec un autre Dvector.
  */
 Dvector operator + (const Dvector & dvec1, const Dvector & dvec2)
