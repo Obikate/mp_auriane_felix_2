@@ -188,7 +188,16 @@ Dvector::Dvector(std::string str)
  * @return Un double.
  */
 
-double Dvector::VectorAccessor(int i)
+double & Dvector::operator ()(int i)
+{
+    /* TODO 
+     * Pq dans les slides pour surcharge avec () on renvoie val[i+1] et non val[i-1] ?
+     */
+    checkInterval(1, size(), i);
+    return pCor[i-1]; 
+}
+
+double & Dvector::operator [](int i)
 {
     checkInterval(0, size() - 1, i);
     return pCor[i]; 

@@ -23,7 +23,8 @@ class Dvector {
         Dvector(std::string str);
         //TP2
         void checkInterval(int inf, int max, int arg);
-        double VectorAccessor(int i);
+	double & operator()(int i);
+	double & operator[](int i);
 };
 
 #endif
