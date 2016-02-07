@@ -1,4 +1,5 @@
 PROGS=test_check_interval
+PROGS += test_VectorAccessor
 CXX = g++
 CXXFLAGS = -Wall #-g
 

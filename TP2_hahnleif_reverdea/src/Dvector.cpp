@@ -178,3 +178,18 @@ Dvector::Dvector(std::string str)
     }
     file.close();
 }
+
+
+
+//implémentation de l'accesseur pour le TP2 question 2
+/**
+ * @brief La fonction accesseur pour les coordonnées du vecteur.
+ * @param i: indice de la coordonnée à récupérer.
+ * @return Un double.
+ */
+
+double Dvector::VectorAccessor(int i)
+{
+    checkInterval(0, size() - 1, i);
+    return pCor[i]; 
+}
