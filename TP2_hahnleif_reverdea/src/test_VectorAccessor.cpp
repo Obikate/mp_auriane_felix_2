@@ -14,7 +14,7 @@ int main()
     assert(v.size() == 10);
     double res = v[9];
     assert(res == 7.4815159e-01);
-    res = v(10);
+    res = v(9);
     assert(res == 7.4815159e-01);
     std::cout<<"OK"<<std::endl;
 }
