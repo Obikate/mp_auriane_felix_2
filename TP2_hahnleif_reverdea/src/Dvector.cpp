@@ -36,9 +36,7 @@ Dvector::Dvector(int d, double init)
     }
     pCor = new double[dim];
     for(int i=0; i<dim; i++)
-    {
         pCor[i] = init;
-    }
 }
 
 /**
@@ -130,9 +128,7 @@ Dvector::Dvector(const Dvector & d)
         return ;
     pCor = new double[dim];
     for(int i=0; i<dim; i++)
-    {
-        pCor[i] = d.pCor[i];
-    }
+        pCor[i] = d[i];
 }
 
 //implémentation des constructeurs et méthodes pour la question 3
@@ -182,75 +178,72 @@ Dvector::Dvector(std::string str)
 /**
  * @brief Surcharge externe de l'opérateur '+' avec un double.
  */
-Dvector operator + (const Dvector & dvec, const double & d)
+Dvector operator + (const Dvector & dVec, const double & d)
 {
-    Dvector res(dvec.size());
+    Dvector res(dVec.size());
     for(int i = 0; i<res.size(); i++)
     {
-        res.pCor[i] = dvec.pCor[i] + d;
+        res[i] = dVec[i] + d;
     }
+
     return res;
 }
 
-Dvector operator + (const double & d, const Dvector & dvec)
+Dvector operator + (const double & d, const Dvector & dVec)
 {
-    return dvec+d;
+    return dVec+d;
 }
 
 /**
  * @brief Surcharge externe de l'opérateur '-' avec un double.
  */
-Dvector operator - (const Dvector & dvec, const double & d)
+Dvector operator - (const Dvector & dVec, const double & d)
 {
-    return dvec+(-d);
+    return dVec+(-d);
 }
 
-Dvector operator - (const double & d, const Dvector & dvec)
+Dvector operator - (const double & d, const Dvector & dVec)
 {
-    for(int i=0; i<dvec.size(); i++)
-        dvec.pCor[i] *= -1;
-    return dvec+d;
+    return (-1*dVec)+d;
 }
 
 /**
  * @brief Surcharge externe de l'opérateur '*' avec un double.
  */
-Dvector operator * (const Dvector & dvec, const double & d)
+Dvector operator * (const Dvector & dVec, const double & d)
 {
-    Dvector res(dvec.size());
+    Dvector res(dVec.size());
     for(int i = 0; i<res.size(); i++)
-    {
-        res.pCor[i] = dvec.pCor[i]*d;
-    }
+        res[i] = dVec[i]*d;
     return res;
 }
 
-Dvector operator * (const double & d, const Dvector & dvec)
+Dvector operator * (const double & d, const Dvector & dVec)
 {
-    return dvec*d;
+    return dVec*d;
 }
 
 /**
  * @brief Surcharge externe de l'opérateur '/' avec un double.
  */
-Dvector operator / (const Dvector & dvec, const double & d)
+Dvector operator / (const Dvector & dVec, const double & d)
 {
     if(d == 0)
         throw std::overflow_error("Division par zero!");
-    return dvec*(1/d);
+    return dVec*(1/d);
 }
 
 /**
  * @brief Surcharge interne de l'opérateur d'affectation '='.
  * Version 1.
  */
-Dvector & Dvector::operator=(const Dvector &d)
+Dvector & Dvector::operator=(const Dvector &dVec)
 {
-    dim = d.size();
-    if(pCor == d.pCor)
+    dim = dVec.size();
+    if(pCor == dVec.pCor)
         return *this;
     pCor = new double[dim];
-    std::memcpy(pCor, d.pCor, dim*sizeof(double));
+    std::memcpy(pCor, dVec.pCor, dim*sizeof(double));
 
     return *this;
 };
@@ -259,14 +252,14 @@ Dvector & Dvector::operator=(const Dvector &d)
  * @brief Surcharge interne de l'opérateur d'affectation '='.
  * Version 2.
  */
-//Dvector & Dvector::operator=(const Dvector &d)
+//Dvector & Dvector::operator=(const Dvector &dVec)
 //{
-//    dim = d.size();
-//    if(pCor == d.pCor)
+//    dim = dVec.size();
+//    if(pCor == dVec.pCor)
 //        return *this;
 //    pCor = new double[dim];
 //    for(int i=0; i<dim; i++)
-//        pCor[i] = d.pCor[i];
+//        pCor[i] = dVec[i];
 //    return *this;
 //};
 
@@ -275,26 +268,26 @@ Dvector & Dvector::operator=(const Dvector &d)
 /**
  * @brief Surcharge interne de l'opérateur unaire '-'.
  */
-Dvector & Dvector::operator-()
+Dvector operator-(const Dvector & dVec)
 {
-    for(int i=0; i<dim; i++)
-        pCor[i] *=-1;
-    return *this;
+    Dvector res = -1*dVec;
+    return res;
 };
+
 
 
 /**
  * @brief Surcharge externe de l'opérateur '+' avec un autre Dvector.
  */
-Dvector operator + (const Dvector & dvec1, const Dvector & dvec2)
-//Dvector operator + (Dvector dvec1, Dvector dvec2)
+Dvector operator + (const Dvector & dVec1, const Dvector & dVec2)
+//Dvector operator + (Dvector dVec1, Dvector dVec2)
 {
-    if(dvec1.size() != dvec2.size())
+    if(dVec1.size() != dVec2.size())
         exit(-1);
-    Dvector res(dvec1.size());
+    Dvector res(dVec1.size());
     for(int i = 0; i<res.size(); i++)
     {
-        res.pCor[i] = dvec1.pCor[i] + dvec2.pCor[i];
+        res[i] = dVec1[i] + dVec2[i];
     }
     return res;
 }
@@ -302,14 +295,12 @@ Dvector operator + (const Dvector & dvec1, const Dvector & dvec2)
 /**
  * @brief Surcharge externe de l'opérateur '-' avec un autre Dvector.
  */
-Dvector operator - (const Dvector & dvec1, const Dvector & dvec2)
+Dvector operator - (const Dvector & dVec1, const Dvector & dVec2)
 {
     //on évite le cas x = x-x
-    if(dvec1.pCor == dvec2.pCor && dvec1.size() == dvec2.size())
-        return dvec1*0;
-    for(int i=0; i<dvec2.size(); i++)
-        dvec2.pCor[i] *= -1;
-    return dvec1+dvec2;
+    if(dVec1.pCor == dVec2.pCor && dVec1.size() == dVec2.size())
+        return dVec1*0;
+    return dVec1+(-1*dVec2);
 }
 
 //implémentation de l'accesseur pour le TP2 question 2
@@ -336,7 +327,7 @@ double & Dvector::operator()(int i) const
 
 double & Dvector::operator [](int i)
 {
-    checkInterval(0, size() - 1, i);
+    assert(i >= 0 && i < size());
     return pCor[i]; 
 }
 
@@ -346,18 +337,18 @@ double & Dvector::operator [](int i)
  */
 double & Dvector::operator[](int i) const
 {
-    checkInterval(0, size()-1, i);
-    return pCor[i-1]; 
+    assert(i >= 0 && i < size());
+    return pCor[i]; 
 }
 
 /**
  * @brief Surcharge externe du outputstream.
  */
-std::ostream & operator <<(std::ostream & out, const Dvector & dvec)
+std::ostream & operator <<(std::ostream & out, const Dvector & dVec)
 {
     out<<"Dvector: ";
-    for(int i=0; i<dvec.size(); i++)
-        out<<dvec.pCor[i]<<" ";
+    for(int i=0; i<dVec.size(); i++)
+        out<<dVec[i]<<" ";
     out<<std::endl;
     return out;
 }
@@ -365,13 +356,13 @@ std::ostream & operator <<(std::ostream & out, const Dvector & dvec)
 /**
  * @brief Surcharge externe du inputstream.
  */
-std::istream & operator >>(std::istream & in, const Dvector & dvec)
+std::istream & operator >>(std::istream & in, const Dvector & dVec)
 {
     double tmp;
-    for(int i=0; i<dvec.size(); i++)
+    for(int i=0; i<dVec.size(); i++)
     {
         in>>tmp;
-        dvec.pCor[i] = tmp;
+        dVec[i] = tmp;
     }
     return in;
 }
@@ -379,14 +370,13 @@ std::istream & operator >>(std::istream & in, const Dvector & dvec)
 /**
  * @brief Surcharge interne de l'opérateur d'affectation '+='.
  */
-Dvector & Dvector::operator+=(const Dvector &dvec)
+Dvector & Dvector::operator+=(const Dvector &dVec)
 {
-   if (dim != dvec.size()) 
+   if (dim != dVec.size()) 
        exit(-1);
-   Dvector &v = *this;
    for (int i = 0; i < dim; i++)
-       v[i] += dvec.pCor[i];
-   return v;
+       (*this)[i] += dVec[i];
+   return *this;
 }
 
 /**
@@ -394,18 +384,17 @@ Dvector & Dvector::operator+=(const Dvector &dvec)
  */
 Dvector & Dvector::operator+=(const double & d)
 {
-   Dvector &v = *this;
    for (int i = 0; i < dim; i++)
-       v[i] += d;
-   return v;
+       (*this)[i] += d;
+   return *this;
 }
 
 /**
  * @brief Surcharge interne de l'opérateur d'affectation '-='.
  */
-Dvector & Dvector::operator-=(const Dvector &dvec)
+Dvector & Dvector::operator-=(const Dvector &dVec)
 {
-   return *this+=(-1*dvec);
+   return *this+=(-1*dVec);
 }
 
 /**
@@ -422,13 +411,9 @@ Dvector & Dvector::operator-=(const double & d)
  */
 Dvector & Dvector::operator*=(const double & d)
 {
-    /** TODO
-     *	faire les tests avec les dim différentes
-     */
-   Dvector &v = *this;
    for (int i = 0; i < dim; i++)
-       v[i] *= d;
-   return v;
+       (*this)[i] *= d;
+   return *this;
 }
 
 /**
@@ -444,13 +429,13 @@ Dvector & Dvector::operator/=(const double & d)
 /**
  * @brief Surcharge interne de l'opérateur d'égalité '=='.
  */
-bool Dvector::operator==(const Dvector & dvec)
+bool Dvector::operator==(const Dvector & dVec)
 {
-    if(size() != dvec.size())
+    if(size() != dVec.size())
         return false;
     for(int i=0; i<size(); i++)
     {
-        if(this->pCor[i] != dvec.pCor[i])
+        if(this->pCor[i] != dVec[i])
             return false;
     }
     return true;
@@ -459,10 +444,9 @@ bool Dvector::operator==(const Dvector & dvec)
 /**
  * @brief Surcharge interne de l'opérateur d'inégalité '!='.
  */
-bool Dvector::operator!=(const Dvector & dvec)
+bool Dvector::operator!=(const Dvector & dVec)
 {
-    Dvector tmp(*this);
-    return !(tmp == dvec);
+    return !(*this == dVec);
 }
 
 /**
@@ -472,7 +456,7 @@ bool Dvector::operator!=(const Dvector & dvec)
  */
 void Dvector::resize(int newDim, double newVal)
 {
-    checkInterval(0, INT_MAX, newDim);
+    assert(newDim >= 0 && newDim <= INT_MAX);
     if(newDim <= dim)
         dim = newDim;
     else

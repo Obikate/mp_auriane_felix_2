@@ -12,9 +12,9 @@
 int main()
 {
     Dvector y(2);
+    std::cout<<"Rentrez: \n2\n2\n";
     std::cin>>y;
-    y.display(std::cout);
-    Dvector res(2);
-    res.display(std::cout);
+    assert(y[0] == 2);
+    assert(y[1] == 2);
     std::cout<<"OK"<<std::endl;
 }

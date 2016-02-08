@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <cstring>
 #include <climits>
+#include <assert.h>
 
 class Dvector {
     private:
@@ -30,7 +31,7 @@ class Dvector {
         double & operator[](int i);
         double & operator()(int i) const;
         double & operator[](int i) const;
-        Dvector & operator-();
+//        Dvector & operator-();
         Dvector & operator +=(const Dvector & dvec); 
         Dvector & operator +=(const double & d); 
         Dvector & operator -=(const Dvector & dvec); 
@@ -42,6 +43,7 @@ class Dvector {
 
         void resize(int newDim, double newVal=0);
 };
+        Dvector operator-(const Dvector &);
 //opérations entre un Dvector et un double
 Dvector operator +(const Dvector &, const double &); 
 Dvector operator +(const double &, const Dvector &); 

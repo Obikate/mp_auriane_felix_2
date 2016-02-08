@@ -16,13 +16,7 @@ int main()
     assert(x.pCor[0] == 5.5);
     assert(x.pCor[1] == 5.5);
     assert(x.pCor[2] == 5.5);
-    std::cout<<"x.pCor[0] : "<<x.pCor[0]<<std::endl;
-    std::cout<<"x.pCor[1] : "<<x.pCor[1]<<std::endl;
-    std::cout<<"x.pCor[2] : "<<x.pCor[2]<<std::endl;
-    //x += -x;
-    //ATTENTION ICI LE X EST MODIFIE EN -X => LE RESULTAT 
-    //DEVRAIT ETRE 0 MAIS C'EST EN FAIT -11.
-    x += (-1*x);
+    x += -x;
     assert(x.pCor[0] == 0);
     assert(x.pCor[1] == 0);
     assert(x.pCor[2] == 0);

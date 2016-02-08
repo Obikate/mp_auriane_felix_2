@@ -20,16 +20,9 @@ int main()
     assert(x.pCor[0] == 0);
     assert(x.pCor[1] == 0);
     assert(x.pCor[2] == 0);
-    //ATTENTION MEME ERREUR QUE DANS ADDITION
-    //ON S'ATTEND A 6 ET ON OBTIENT 0
     y -= -y;
-    std::cout<<"y.pCor[0] : "<<y.pCor[0]<<std::endl;
-    std::cout<<"y.pCor[1] : "<<y.pCor[1]<<std::endl;
-    std::cout<<"y.pCor[2] : "<<y.pCor[2]<<std::endl;
-    /*
-    assert(y.pCor[0] == 6);
-    assert(y.pCor[1] == 6);
-    assert(y.pCor[2] == 6);
-    */
+    assert(y.pCor[0] == 5);
+    assert(y.pCor[1] == 5);
+    assert(y.pCor[2] == 5);
     std::cout<<"OK"<<std::endl;
 }
