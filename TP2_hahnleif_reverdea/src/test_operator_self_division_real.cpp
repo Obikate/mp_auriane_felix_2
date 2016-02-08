@@ -5,7 +5,7 @@
  * d'opérateur /= avec un réel.
  */ 
 
-#include "Dvector.h"
+#include "Dvector.hpp"
 #include <assert.h>
 
 int main()

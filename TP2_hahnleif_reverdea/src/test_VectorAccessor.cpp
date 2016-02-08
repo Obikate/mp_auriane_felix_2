@@ -5,7 +5,7 @@
  * getVector.
  */ 
 
-#include "Dvector.h"
+#include "Dvector.hpp"
 #include <assert.h>
 
 int main()
