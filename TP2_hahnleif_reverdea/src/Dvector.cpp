@@ -242,6 +242,7 @@ Dvector operator / (const Dvector & dvec, const double & d)
 
 /**
  * @brief Surcharge interne de l'opérateur d'affectation '='.
+ * Version 1.
  */
 Dvector & Dvector::operator=(const Dvector &d)
 {
@@ -253,6 +254,23 @@ Dvector & Dvector::operator=(const Dvector &d)
 
     return *this;
 };
+
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '='.
+ * Version 2.
+ */
+//Dvector & Dvector::operator=(const Dvector &d)
+//{
+//    dim = d.size();
+//    if(pCor == d.pCor)
+//        return *this;
+//    pCor = new double[dim];
+//    for(int i=0; i<dim; i++)
+//        pCor[i] = d.pCor[i];
+//    return *this;
+//};
+
+
 
 /**
  * @brief Surcharge interne de l'opérateur unaire '-'.
@@ -313,4 +331,30 @@ double & Dvector::operator [](int i)
 {
     checkInterval(0, size() - 1, i);
     return pCor[i]; 
+}
+
+/**
+ * @brief Surcharge externe du outputstream.
+ */
+std::ostream & operator <<(std::ostream & out, const Dvector & dvec)
+{
+    out<<"Dvector: ";
+    for(int i=0; i<dvec.size(); i++)
+        out<<dvec.pCor[i]<<" ";
+    out<<std::endl;
+    return out;
+}
+
+/**
+ * @brief Surcharge externe du inputstream.
+ */
+std::istream & operator >>(std::istream & in, const Dvector & dvec)
+{
+    double tmp;
+    for(int i=0; i<dvec.size(); i++)
+    {
+        in>>tmp;
+        dvec.pCor[i] = tmp;
+    }
+    return in;
 }

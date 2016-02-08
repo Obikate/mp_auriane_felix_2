@@ -41,6 +41,9 @@ class Dvector {
         //opérations entre deux Dvectors
         Dvector operator +(const Dvector &, const Dvector &); 
         Dvector operator -(const Dvector &, const Dvector &); 
+        //opérateurs de flux
+        std::ostream & operator <<(std::ostream &, const Dvector &);
+        std::istream & operator >>(std::istream &, const Dvector &);
 
 
 #endif
