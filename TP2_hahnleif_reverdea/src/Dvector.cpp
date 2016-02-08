@@ -323,8 +323,11 @@ double & Dvector::operator ()(int i)
     /* TODO 
      * Pq dans les slides pour surcharge avec () on renvoie val[i+1] et non val[i-1] ?
      */
-    checkInterval(1, size(), i);
-    return pCor[i-1]; 
+    checkInterval(0, size(), i);
+    if (i == 0)
+	return pCor[i];
+    else
+      return pCor[i-1]; 
 }
 
 double & Dvector::operator [](int i)
@@ -358,6 +361,7 @@ std::istream & operator >>(std::istream & in, const Dvector & dvec)
     }
     return in;
 }
+
 /**
  * @brief Surcharge interne de l'opérateur d'affectation '+='.
  */
