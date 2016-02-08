@@ -10,7 +10,7 @@
  * @param max : Si l'argument est strictement supérieur, alors on lève
  * une exception.
  */
-void Dvector::checkInterval(int inf, int max, int arg)
+void Dvector::checkInterval(int inf, int max, int arg) const
 {
     std::string msg = "L'argument d'entrée n'est pas dans l'intervalle voulu!";
     if(arg < inf || arg > max)
@@ -287,6 +287,7 @@ Dvector & Dvector::operator-()
  * @brief Surcharge externe de l'opérateur '+' avec un autre Dvector.
  */
 Dvector operator + (const Dvector & dvec1, const Dvector & dvec2)
+//Dvector operator + (Dvector dvec1, Dvector dvec2)
 {
     if(dvec1.size() != dvec2.size())
         exit(-1);
@@ -327,10 +328,31 @@ double & Dvector::operator ()(int i)
     return pCor[i-1]; 
 }
 
+/**
+ * @brief Même fonction que la fonction précédente, juste pour
+ * des valeurs de retour constantes.
+ */
+double & Dvector::operator()(int i) const
+{
+    checkInterval(1, size(), i);
+    return pCor[i-1]; 
+}
+
+
 double & Dvector::operator [](int i)
 {
     checkInterval(0, size() - 1, i);
     return pCor[i]; 
+}
+
+/**
+ * @brief Même fonction que la fonction précédente, juste pour
+ * des valeurs de retour constantes.
+ */
+double & Dvector::operator[](int i) const
+{
+    checkInterval(0, size()-1, i);
+    return pCor[i-1]; 
 }
 
 /**

@@ -24,10 +24,12 @@ class Dvector {
         //question 3
         Dvector(std::string str);
         //TP2
-        void checkInterval(int inf, int max, int arg);
+        void checkInterval(int inf, int max, int arg) const;
         Dvector & operator=(const Dvector &);
         double & operator()(int i);
         double & operator[](int i);
+        double & operator()(int i) const;
+        double & operator[](int i) const;
         Dvector & operator-();
         Dvector & operator +=(const Dvector & dvec); 
         Dvector & operator +=(const double & d); 
@@ -51,6 +53,7 @@ Dvector operator /(const Dvector &, const double &);
 
 //opérations entre deux Dvectors
 Dvector operator +(const Dvector &, const Dvector &); 
+//Dvector operator +(Dvector , Dvector); 
 Dvector operator -(const Dvector &, const Dvector &); 
 //opérateurs de flux
 std::ostream & operator <<(std::ostream &, const Dvector &);
