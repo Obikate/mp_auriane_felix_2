@@ -357,4 +357,67 @@ std::istream & operator >>(std::istream & in, const Dvector & dvec)
         dvec.pCor[i] = tmp;
     }
     return in;
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '+='.
+ */
+Dvector & Dvector::operator+=(const Dvector &dvec)
+{
+   if (dim != dvec.size()) 
+       exit(-1);
+   Dvector &v = *this;
+   for (int i = 0; i < dim; i++)
+       v[i] += dvec.pCor[i];
+   return v;
+}
+
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '+=' avec un réel.
+ */
+Dvector & Dvector::operator+=(const double & d)
+{
+   Dvector &v = *this;
+   for (int i = 0; i < dim; i++)
+       v[i] += d;
+   return v;
+}
+
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '-='.
+ */
+Dvector & Dvector::operator-=(const Dvector &dvec)
+{
+   return *this+=(-1*dvec);
+}
+
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '-=' avec un réel.
+ */
+Dvector & Dvector::operator-=(const double & d)
+{
+   return *this+=(-d);
+}
+
+
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '*='.
+ */
+Dvector & Dvector::operator*=(const double & d)
+{
+    /** TODO
+     *	faire les tests avec les dim différentes
+     */
+   Dvector &v = *this;
+   for (int i = 0; i < dim; i++)
+       v[i] *= d;
+   return v;
+}
+
+/**
+ * @brief Surcharge interne de l'opérateur d'affectation '/='.
+ */
+Dvector & Dvector::operator/=(const double & d)
+{
+   if (d == 0)
+        throw std::overflow_error("Division par zero!");
+   return *this*=(1/d);
 }
