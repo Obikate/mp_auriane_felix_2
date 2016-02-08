@@ -357,6 +357,7 @@ std::istream & operator >>(std::istream & in, const Dvector & dvec)
         dvec.pCor[i] = tmp;
     }
     return in;
+}
 /**
  * @brief Surcharge interne de l'opérateur d'affectation '+='.
  */
@@ -420,4 +421,54 @@ Dvector & Dvector::operator/=(const double & d)
    if (d == 0)
         throw std::overflow_error("Division par zero!");
    return *this*=(1/d);
+}
+
+/**
+ * @brief Surcharge interne de l'opérateur d'égalité '=='.
+ */
+bool Dvector::operator==(const Dvector & dvec)
+{
+    if(size() != dvec.size())
+        return false;
+    for(int i=0; i<size(); i++)
+    {
+        if(this->pCor[i] != dvec.pCor[i])
+            return false;
+    }
+    return true;
+}
+
+/**
+ * @brief Surcharge interne de l'opérateur d'inégalité '!='.
+ */
+bool Dvector::operator!=(const Dvector & dvec)
+{
+    Dvector tmp(*this);
+    return !(tmp == dvec);
+}
+
+/**
+ * @brief La méthode resize permet de redimensionner le vecteur en
+ * définissant directement les nouvelles valeurs éventuellement
+ * ajoutées.
+ */
+void Dvector::resize(int newDim, double newVal)
+{
+    checkInterval(0, INT_MAX, newDim);
+    if(newDim <= dim)
+        dim = newDim;
+    else
+    {
+        //on fait une réallocation de mémoire
+        double tmpTab[newDim];
+        memcpy(tmpTab, pCor, dim*sizeof(double));
+        delete [] pCor;
+        pCor = new double[newDim];
+        //recopie des valeurs
+        for(int i=0; i<dim; i++)
+            pCor[i] = tmpTab[i];
+        for(int i=dim; i<newDim; i++)
+            pCor[i] = newVal;
+        dim=newDim;
+    }
 }

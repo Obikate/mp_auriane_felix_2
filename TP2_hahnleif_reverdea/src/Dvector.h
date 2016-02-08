@@ -6,6 +6,7 @@
 #include "stdlib.h"
 #include <stdexcept>
 #include <cstring>
+#include <climits>
 
 class Dvector {
     private:
@@ -25,8 +26,8 @@ class Dvector {
         //TP2
         void checkInterval(int inf, int max, int arg);
         Dvector & operator=(const Dvector &);
-	double & operator()(int i);
-	double & operator[](int i);
+        double & operator()(int i);
+        double & operator[](int i);
         Dvector & operator-();
         Dvector & operator +=(const Dvector & dvec); 
         Dvector & operator +=(const double & d); 
@@ -34,22 +35,26 @@ class Dvector {
         Dvector & operator -=(const double & d); 
         Dvector & operator *=(const double & d); 
         Dvector & operator /=(const double & d); 
-};
-        //opérations entre un Dvector et un double
-        Dvector operator +(const Dvector &, const double &); 
-        Dvector operator +(const double &, const Dvector &); 
-        Dvector operator -(const Dvector &, const double &); 
-        Dvector operator -(const double &, const Dvector &); 
-        Dvector operator *(const Dvector &, const double &); 
-        Dvector operator *(const double &, const Dvector &); 
-        Dvector operator /(const Dvector &, const double &); 
+        bool operator ==(const Dvector & dvec);
+        bool operator !=(const Dvector & dvec);
 
-        //opérations entre deux Dvectors
-        Dvector operator +(const Dvector &, const Dvector &); 
-        Dvector operator -(const Dvector &, const Dvector &); 
-        //opérateurs de flux
-        std::ostream & operator <<(std::ostream &, const Dvector &);
-        std::istream & operator >>(std::istream &, const Dvector &);
+        void resize(int newDim, double newVal=0);
+};
+//opérations entre un Dvector et un double
+Dvector operator +(const Dvector &, const double &); 
+Dvector operator +(const double &, const Dvector &); 
+Dvector operator -(const Dvector &, const double &); 
+Dvector operator -(const double &, const Dvector &); 
+Dvector operator *(const Dvector &, const double &); 
+Dvector operator *(const double &, const Dvector &); 
+Dvector operator /(const Dvector &, const double &); 
+
+//opérations entre deux Dvectors
+Dvector operator +(const Dvector &, const Dvector &); 
+Dvector operator -(const Dvector &, const Dvector &); 
+//opérateurs de flux
+std::ostream & operator <<(std::ostream &, const Dvector &);
+std::istream & operator >>(std::istream &, const Dvector &);
 
 
 #endif

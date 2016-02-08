@@ -7,14 +7,11 @@
 
 #include "Dvector.h"
 #include <assert.h>
-#include <sstream>
 
 int main()
 {
-    Dvector y(2);
-    std::cin>>y;
-    y.display(std::cout);
-    Dvector res(2);
-    res.display(std::cout);
+    Dvector x;
+    Dvector y;
+    assert(x == y);
     std::cout<<"OK"<<std::endl;
 }
