@@ -226,6 +226,7 @@ Dvector & Dvector::operator=(const Dvector &dVec)
     dim = dVec.size();
     if(pCor == dVec.pCor)
         return *this;
+    delete [] pCor;
     pCor = new double[dim];
     std::memcpy(pCor, dVec.pCor, dim*sizeof(double));
 
@@ -241,6 +242,7 @@ Dvector & Dvector::operator=(const Dvector &dVec)
 //    dim = dVec.size();
 //    if(pCor == dVec.pCor)
 //        return *this;
+//    delete [] pCor;
 //    pCor = new double[dim];
 //    for(int i=0; i<dim; i++)
 //        pCor[i] = dVec[i];
@@ -378,7 +380,7 @@ Dvector & Dvector::operator+=(const double & d)
  */
 Dvector & Dvector::operator-=(const Dvector &dVec)
 {
-   return *this+=(-1*dVec);
+   return *this+=-dVec;//(-1*dVec);
 }
 
 /**
@@ -451,8 +453,7 @@ void Dvector::resize(int newDim, double newVal)
         delete [] pCor;
         pCor = new double[newDim];
         //recopie des valeurs
-        for(int i=0; i<dim; i++)
-            pCor[i] = tmpTab[i];
+        memcpy(pCor, tmpTab, dim*sizeof(double));
         for(int i=dim; i<newDim; i++)
             pCor[i] = newVal;
         dim=newDim;

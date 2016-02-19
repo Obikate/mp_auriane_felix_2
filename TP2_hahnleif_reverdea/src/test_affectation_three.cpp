@@ -10,7 +10,7 @@
 
 int main()
 {
-    int sizeOfX = 2000000;
+    int sizeOfX = 1000000000;
     Dvector x(sizeOfX);
     x.fillRandomly();
     Dvector y;

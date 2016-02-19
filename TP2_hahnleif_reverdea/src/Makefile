@@ -1,7 +1,7 @@
 PROGS=$(patsubst %.cpp, %, $(wildcard test_*.cpp))
 
 CXX = g++
-CXXFLAGS = -Wall #-g
+CXXFLAGS = -Wall -g
 
 test_%: Dvector.o test_%.o 
 	$(CXX) $(CXXFLAGS) -o $@ $^

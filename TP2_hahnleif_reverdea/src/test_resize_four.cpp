@@ -3,6 +3,8 @@
  * @date 08/02/16.
  * @brief Classe de test vérifiant le bon fonctionnement de la méthode
  * resize.
+ * Il y a un comportement invalide dans ce test, utilisation d'une dimension
+ * négative, ainsi il y aura une perte de mémoire.
  */ 
 
 #include "Dvector.hpp"
