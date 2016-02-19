@@ -25,7 +25,6 @@ class Dvector {
         //question 3
         Dvector(std::string str);
         //TP2
-        void checkInterval(int inf, int max, int arg) const;
         Dvector & operator=(const Dvector &);
         double & operator()(int i);
         double & operator[](int i);

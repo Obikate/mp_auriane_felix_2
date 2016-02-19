@@ -12,5 +12,9 @@ int main()
 {
     Dvector x(3, 2.5);
     x = x;
-    x.display(std::cout);
+    assert(x.size() == 3);
+    assert(x[0] == 2.5);
+    assert(x[1] == 2.5);
+    assert(x[2] == 2.5);
+    std::cout<<"OK"<<std::endl;
 }

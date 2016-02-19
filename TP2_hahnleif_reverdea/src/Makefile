@@ -15,4 +15,4 @@ all: $(PROGS)
 
 .PHONY : check
 check: all
-	for i in $(PROGS); do echo $$i; ./$$i;done;
+	for i in $(PROGS); do echo $$i; ./$$i;echo "\n";done;

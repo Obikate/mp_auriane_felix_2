@@ -1,22 +1,6 @@
 #include "Dvector.hpp"
 #include <iomanip>
 
-/**
- * @brief Fonction auxiliaire vérifiant si l'argument d'entrée se trouve
- * dans l'intervalle voulu. Elle lève une exception si ce n'est pas 
- * le cas.
- * @param inf : Si l'argument est strictement inférieur, alors on lève
- * une exception.
- * @param max : Si l'argument est strictement supérieur, alors on lève
- * une exception.
- */
-void Dvector::checkInterval(int inf, int max, int arg) const
-{
-    std::string msg = "L'argument d'entrée n'est pas dans l'intervalle voulu!";
-    if(arg < inf || arg > max)
-        throw std::out_of_range(msg);
-}
-
 //implémentation des constructeurs et méthodes pour la question 1
 /**
  * @brief Le constructeur par défaut.

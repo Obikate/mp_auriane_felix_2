@@ -12,6 +12,7 @@ int main()
 {
     Dvector x(3, 2.5);
     x = x/0;
+    //on s'attend à une erreur
     assert(x.pCor[0] == 1);
     assert(x.pCor[1] == 1);
     assert(x.pCor[2] == 1);
