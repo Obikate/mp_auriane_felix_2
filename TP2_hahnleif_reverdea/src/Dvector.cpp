@@ -1,5 +1,11 @@
 #include "Dvector.hpp"
 #include <iomanip>
+#include <assert.h>
+#include "stdlib.h"
+#include <fstream>
+#include <climits>
+#include <cstring>
+#include <stdexcept>
 
 //implémentation des constructeurs et méthodes pour la question 1
 /**
@@ -266,7 +272,6 @@ Dvector operator-(const Dvector & dVec)
  * @brief Surcharge externe de l'opérateur '+' avec un autre Dvector.
  */
 Dvector operator + (const Dvector & dVec1, const Dvector & dVec2)
-//Dvector operator + (Dvector dVec1, Dvector dVec2)
 {
     if(dVec1.size() != dVec2.size())
         exit(-1);
@@ -380,7 +385,7 @@ Dvector & Dvector::operator+=(const double & d)
  */
 Dvector & Dvector::operator-=(const Dvector &dVec)
 {
-   return *this+=-dVec;//(-1*dVec);
+   return *this+=-dVec;
 }
 
 /**
